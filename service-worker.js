@@ -1,10 +1,11 @@
-const CACHE_NAME = 'solar-flashcards-v2';
+const CACHE_NAME = 'solar-flashcards-v3';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
   './icon-180.png',
   './icon-512.png',
+  './profile.jpg',
 ];
 
 self.addEventListener('install', (event) => {

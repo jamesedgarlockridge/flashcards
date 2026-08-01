@@ -109,9 +109,10 @@
     align-items:center; justify-content:center; padding:24px; opacity:0; pointer-events:none; transition:opacity .2s; }
   .modal-overlay.show{ opacity:1; pointer-events:auto; }
   .modal-card{ background:var(--card); border-radius:26px; padding:28px 24px 24px; max-width:340px; width:100%; }
-  .modal-icon{ width:52px; height:52px; border-radius:16px; background:var(--tile); display:flex;
-    align-items:center; justify-content:center; margin:0 auto 16px; }
-  .modal-icon svg{ width:26px; height:26px; stroke:#fff; }
+  .modal-icon{ width:96px; height:96px; border-radius:50%; background:var(--tile); display:flex;
+    align-items:center; justify-content:center; margin:0 auto 16px; overflow:hidden;
+    border:2px solid var(--card-line); }
+  .modal-icon img{ width:100%; height:100%; object-fit:cover; display:block; }
   .modal-text{ font-size:14.5px; line-height:1.55; color:var(--ink-dim); font-weight:600; text-align:center; margin:0 0 20px; }
 
   /* ---------- STUDY ---------- */
@@ -353,7 +354,7 @@ const sizeSeg = document.getElementById('sizeSeg');
 
 const infoBtn = document.getElementById('infoBtn');
 infoBtn.innerHTML = `<div class="icon-tile dim">${icon('info')}</div><span>About this app</span>`;
-document.getElementById('modalIcon').innerHTML = icon('info','width="26" height="26"');
+document.getElementById('modalIcon').innerHTML = '<img src="profile.jpg" alt="James Edgar Lockridge">';
 const infoModal = document.getElementById('infoModal');
 infoBtn.addEventListener('click', ()=> infoModal.classList.add('show'));
 document.getElementById('closeInfoBtn').addEventListener('click', ()=> infoModal.classList.remove('show'));
