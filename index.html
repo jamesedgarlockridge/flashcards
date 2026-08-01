@@ -22,7 +22,6 @@
     --accent:#e2823f;
     --tile:#5f86bb;
     --tile-dim:#3d5474;
-    --periwinkle:#9ab3d6;
     --ink:#ffffff;
     --ink-dim:#8ea0c2;
     --ink-faint:#4d5c78;
@@ -54,13 +53,13 @@
   /* ---------- HOME ---------- */
   #home .scroll{ padding: calc(var(--safe-t) + 22px) 18px calc(var(--safe-b) + 24px); }
   .brand{ padding:0 2px; margin-bottom:18px; }
-  .brand h1{ font-size:44px; line-height:.98; font-weight:200; text-transform:uppercase; letter-spacing:-.03em;
-    margin:0; transform:scaleY(1.12); transform-origin:left bottom; }
+  .brand h1{ font-size:48px; line-height:1; font-weight:100; text-transform:uppercase; letter-spacing:-.05em;
+    margin:0; transform:scaleY(1.15); transform-origin:left bottom; }
   .brand h1 span{ display:block; color:var(--tile); }
   .brand h1 span:last-child{ color:#2c3c54; }
   .brand .meta{ display:flex; flex-wrap:wrap; align-items:baseline; gap:6px; margin-top:16px;
     font-size:11.5px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
-  .brand .meta .meta-highlight{ color:var(--periwinkle); }
+  .brand .meta .meta-highlight{ color:var(--tile); }
   .brand .meta .meta-dot, .brand .meta .meta-count{ color:var(--ink-faint); }
 
   .stat-card{ background:var(--good); border-radius:26px; padding:24px 20px; margin-bottom:14px; }
@@ -113,7 +112,7 @@
   .modal-card{ background:var(--card); border-radius:26px; padding:28px 24px 24px; max-width:340px; width:100%; }
   .modal-icon{ width:96px; height:96px; border-radius:50%; background:var(--tile); display:flex;
     align-items:center; justify-content:center; margin:0 auto 16px; overflow:hidden;
-    border:2px solid var(--card-line); }
+    border:4px solid var(--tile); box-shadow:0 0 0 1px var(--card-line); }
   .modal-icon img{ width:100%; height:100%; object-fit:cover; display:block; }
   .modal-text{ font-size:14.5px; line-height:1.55; color:var(--ink-dim); font-weight:600; text-align:center; margin:0 0 20px; }
 
@@ -278,7 +277,7 @@ const ICONS = {
   chevronLeft: '<path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
   check: '<path d="M5 13l4.5 4.5L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
   x: '<path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none"/>',
-  info: '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 11v5.3" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.6" r="1.15" fill="currentColor"/>',
+  info: '<circle cx="12" cy="7.6" r="2.1" fill="currentColor"/><rect x="10.2" y="10.6" width="3.6" height="8.8" rx="1.8" fill="currentColor"/>',
   cards: '<rect x="5" y="7" width="14" height="10" rx="2.4" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 4.2h7.4A2 2 0 0 1 17.4 6.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>',
   quiz: '<circle cx="12" cy="12" r="8.6" stroke="currentColor" stroke-width="2" fill="none"/><path d="M9.6 9.6a2.4 2.4 0 1 1 3.3 2.2c-.85.45-.95.85-.95 1.7" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/><circle cx="12" cy="16.4" r="0.9" fill="currentColor"/>',
   planet: '<circle cx="12" cy="12" r="4.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="10" ry="3.1" stroke="currentColor" stroke-width="1.6" fill="none" transform="rotate(-14 12 12)"/>',
