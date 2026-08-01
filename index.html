@@ -104,7 +104,7 @@
     color:var(--ink-faint); font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
     width:100%; background:none; border:none; padding:8px; }
   .footer-line .icon-tile{ width:22px; height:22px; border-radius:7px; }
-  .footer-line .icon-tile svg{ width:15px; height:15px; }
+  .footer-line .icon-tile svg{ width:17px; height:17px; }
 
   .modal-overlay{ position:fixed; inset:0; background:rgba(0,0,0,.78); z-index:80; display:flex;
     align-items:center; justify-content:center; padding:24px; opacity:0; pointer-events:none; transition:opacity .2s; }
@@ -277,7 +277,7 @@ const ICONS = {
   chevronLeft: '<path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
   check: '<path d="M5 13l4.5 4.5L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
   x: '<path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none"/>',
-  info: '<circle cx="12" cy="6.1" r="2.6" fill="currentColor"/><rect x="9.6" y="9.3" width="4.8" height="1.4" fill="currentColor"/><rect x="10.6" y="10.4" width="2.8" height="7" fill="currentColor"/><rect x="8.6" y="17.1" width="6.8" height="1.7" fill="currentColor"/>',
+  info: { vb: '182 119 136 262', body: '<g transform="translate(0,500) scale(0.1,-0.1)" fill="currentColor"><path d="M2363 3736 c-103 -34 -176 -98 -222 -196 -22 -47 -26 -68 -26 -145 1 -79 4 -97 30 -148 34 -68 107 -140 173 -169 72 -33 191 -36 264 -8 76 28 159 104 195 178 25 50 28 68 28 152 0 79 -4 103 -24 142 -60 122 -173 198 -304 204 -43 3 -89 -2 -114 -10z M2335 2794 c-170 -7 -343 -13 -382 -13 l-73 -1 0 -80 0 -80 103 0 c124 0 168 -11 201 -51 l26 -31 0 -514 c0 -554 -1 -568 -52 -595 -13 -7 -73 -15 -140 -17 l-118 -4 0 -79 0 -79 610 0 610 0 0 79 0 78 -102 5 c-120 5 -160 21 -177 69 -8 22 -11 232 -11 680 l0 649 -92 -1 c-51 -1 -232 -8 -403 -15z"/></g>' },
   cards: '<rect x="5" y="7" width="14" height="10" rx="2.4" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 4.2h7.4A2 2 0 0 1 17.4 6.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>',
   quiz: '<circle cx="12" cy="12" r="8.6" stroke="currentColor" stroke-width="2" fill="none"/><path d="M9.6 9.6a2.4 2.4 0 1 1 3.3 2.2c-.85.45-.95.85-.95 1.7" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/><circle cx="12" cy="16.4" r="0.9" fill="currentColor"/>',
   planet: '<circle cx="12" cy="12" r="4.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="10" ry="3.1" stroke="currentColor" stroke-width="1.6" fill="none" transform="rotate(-14 12 12)"/>',
@@ -290,7 +290,13 @@ const ICONS = {
   instruments: '<path d="M4.2 14.8l12.4-6.6 1.9 3.6-12.4 6.6-1.9-3.6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" fill="none"/><path d="M14.6 9.6l2.8-1.5M9.4 17.2l-1.9 3.3M15 20l-1.9-3.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>',
   missions: '<path d="M12 2.4c2.6 2 3.8 5.2 3.8 8.6 0 1.9-.55 3.5-1.3 4.8H9.5c-.75-1.3-1.3-2.9-1.3-4.8 0-3.4 1.2-6.6 3.8-8.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" fill="none"/><circle cx="12" cy="9.6" r="1.2" fill="currentColor"/><path d="M8.2 15.8l-2.3 3.8M15.8 15.8l2.3 3.8M9.8 19.4h4.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
 };
-function icon(name, extra){ return `<svg viewBox="0 0 24 24" ${extra||''}>${ICONS[name]||''}</svg>`; }
+function icon(name, extra){
+  const entry = ICONS[name];
+  if (entry && typeof entry === 'object') {
+    return `<svg viewBox="${entry.vb}" ${extra||''}>${entry.body}</svg>`;
+  }
+  return `<svg viewBox="0 0 24 24" ${extra||''}>${entry||''}</svg>`;
+}
 
 const CAT_META = {
   formation:      {label:'Formation'},
