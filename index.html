@@ -22,6 +22,7 @@
     --accent:#e2823f;
     --tile:#5f86bb;
     --tile-dim:#3d5474;
+    --periwinkle:#9ab3d6;
     --ink:#ffffff;
     --ink-dim:#8ea0c2;
     --ink-faint:#4d5c78;
@@ -57,9 +58,10 @@
     margin:0; transform:scaleY(1.12); transform-origin:left bottom; }
   .brand h1 span{ display:block; color:var(--tile); }
   .brand h1 span:last-child{ color:#2c3c54; }
-  .brand .meta{ margin-top:16px;
-    font-size:11.5px; font-weight:800; letter-spacing:.1em; color:var(--ink-faint); text-transform:uppercase; }
-  .brand .meta b{ color:var(--ink-dim); }
+  .brand .meta{ display:flex; flex-wrap:wrap; align-items:baseline; gap:6px; margin-top:16px;
+    font-size:11.5px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+  .brand .meta .meta-highlight{ color:var(--periwinkle); }
+  .brand .meta .meta-dot, .brand .meta .meta-count{ color:var(--ink-faint); }
 
   .stat-card{ background:var(--good); border-radius:26px; padding:24px 20px; margin-bottom:14px; }
   .stat-card .label{ text-align:center; font-size:11.5px; font-weight:800; letter-spacing:.12em;
@@ -201,7 +203,7 @@
     <div class="scroll">
       <div class="brand">
         <h1><span>SOLAR SYSTEM</span><span>FLASHCARDS</span></h1>
-        <div class="meta"><span>1,000 CARDS</span></div>
+        <div class="meta"><span class="meta-highlight">From Origin to Exploration</span><span class="meta-dot">&middot;</span><span class="meta-count">1,000 Cards</span></div>
       </div>
 
       <div class="stat-card">
