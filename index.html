@@ -105,6 +105,7 @@
     width:100%; background:none; border:none; padding:8px; }
   .footer-line .icon-tile{ width:22px; height:22px; border-radius:7px; }
   .footer-line .icon-tile svg{ width:17px; height:17px; }
+  .footer-line .icon-tile.round-info{ border-radius:50%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); }
 
   .modal-overlay{ position:fixed; inset:0; background:rgba(0,0,0,.78); z-index:80; display:flex;
     align-items:center; justify-content:center; padding:24px; opacity:0; pointer-events:none; transition:opacity .2s; }
@@ -363,7 +364,7 @@ const sizeSeg = document.getElementById('sizeSeg');
 });
 
 const infoBtn = document.getElementById('infoBtn');
-infoBtn.innerHTML = `<div class="icon-tile dim">${icon('info')}</div><span>About this app</span>`;
+infoBtn.innerHTML = `<div class="icon-tile round-info">${icon('info')}</div><span>About this app</span>`;
 document.getElementById('modalIcon').innerHTML = '<img src="profile.jpg" alt="James Edgar Lockridge">';
 const infoModal = document.getElementById('infoModal');
 infoBtn.addEventListener('click', ()=> infoModal.classList.add('show'));
