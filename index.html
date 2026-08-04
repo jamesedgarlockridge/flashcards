@@ -264,7 +264,7 @@
       </div>
       <button class="stack-btn primary" id="againBtn">Study Again</button>
       <button class="stack-btn" id="missedBtn" style="display:none">Review Missed Cards</button>
-      <button class="stack-btn" id="homeBtn">Change Settings</button>
+      <button class="stack-btn" id="homeBtn">Home</button>
     </div>
   </div>
 
@@ -308,8 +308,9 @@ const CAT_META = {
   instruments:    {label:'Instruments'},
   missions:       {label:'Missions'},
 };
-const BOX_DAYS = [0,1,3,7,16,35];
-const MASTER_BOX = 5;
+const BOX_DAYS = [0,1,3,7];
+const MAX_BOX = BOX_DAYS.length - 1;
+const MASTERED_AT = 1;
 const PROG_KEY = 'ssfc_progress';
 const LEGACY_PROG_KEYS = ['ssfc_progress_v3','ssfc_progress_v2','ssfc_progress_v1'];
 
@@ -367,13 +368,13 @@ infoBtn.addEventListener('click', ()=> infoModal.classList.add('show'));
 document.getElementById('closeInfoBtn').addEventListener('click', ()=> infoModal.classList.remove('show'));
 infoModal.addEventListener('click', e=>{ if(e.target===infoModal) infoModal.classList.remove('show'); });
 
-function isMastered(id){ return progress[id] && progress[id].box >= MASTER_BOX; }
+function isMastered(id){ return progress[id] && progress[id].box >= MASTERED_AT; }
 
 function updateStats(){
   let mastered=0;
   CARDS.forEach(c=>{
     const p = progress[c.id];
-    if(p && p.box>=MASTER_BOX) mastered++;
+    if(p && p.box>=MASTERED_AT) mastered++;
   });
   document.getElementById('masteredCount').textContent = mastered;
 }
@@ -438,7 +439,7 @@ function updateStudyTopbar(){
 function gradeCard(id, gotIt){
   const p = progress[id] || {box:0, nextReview:0, seen:0, correct:0};
   p.seen += 1;
-  if(gotIt){ p.box = Math.min(p.box+1, MASTER_BOX); p.correct += 1; session.got++; }
+  if(gotIt){ p.box = Math.min(p.box+1, MAX_BOX); p.correct += 1; session.got++; }
   else { p.box = 0; session.learn++; session.missed.push(id); }
   p.nextReview = Date.now() + BOX_DAYS[p.box]*86400000;
   progress[id] = p;
